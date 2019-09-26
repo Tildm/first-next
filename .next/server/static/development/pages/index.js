@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -771,58 +771,83 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "D:\\ModernReact\\Next\\first-next\\pages\\index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+ // const Index = () => {
+//   return (
+//
+//   <div>
+//
+//     <h1>Our Index Page!!!</h1>
+//     <Link href="/about"><a>About Page</a></Link>
+//     <Link href="/contact"><a>Contact Page</a></Link>
+//   </div>
+//   )
+// };
 
-const Index = () => {
+const Index = ({
+  posts
+}) => {
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
+      lineNumber: 22
     },
     __self: undefined
   }, __jsx("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 23
     },
     __self: undefined
-  }, "Our Index Page!!!"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/about",
+  }, "The most intersting Posts ever!"), __jsx("ul", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 24
+    },
+    __self: undefined
+  }, posts.map(post => __jsx("li", {
+    key: post.id,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: undefined
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: `/post?id=${post.id}`,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27
     },
     __self: undefined
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 27
     },
     __self: undefined
-  }, "About Page")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/contact",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11
-    },
-    __self: undefined
-  }, __jsx("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11
-    },
-    __self: undefined
-  }, "Contact Page")));
+  }, post.title))))));
+};
+
+Index.getInitialProps = async () => {
+  const res = await axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://jsonplaceholder.typicode.com/posts");
+  const {
+    data
+  } = res;
+  return {
+    posts: data
+  };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -831,6 +856,17 @@ const Index = () => {
 
 module.exports = __webpack_require__(/*! D:\ModernReact\Next\first-next\pages\index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
 
 /***/ }),
 
